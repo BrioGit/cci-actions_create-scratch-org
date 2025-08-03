@@ -20,6 +20,9 @@ inputs:
     description: 'Name of an optional extra commit status to set from build results'
     required: true
     default: Scratch Org
+  py-version:
+    description: 'Python version to use for CumulusCI'
+    required: false
 runs:
     using: "composite"
     steps:
@@ -29,6 +32,7 @@ runs:
         with:
           cumulusci-version: '${{ inputs.cumulusci-version }}'
           sfdx-version: '${{ inputs.sfdx-version }}'
+          py-version: '${{ inputs.py-version }}'
       - name: Authenticate to Dev Hub
         uses: nimba-actions/authorize-org@v1
         with:
